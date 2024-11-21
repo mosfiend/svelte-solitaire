@@ -18,12 +18,6 @@ export class LoaderScene extends Container {
   downloadProgress(progressRatio) {}
   gameLoaded() {
     Manager.changeScene(new StartMenu());
-    const bg = new Graphics()
-      .rect(0, 0, Manager.width, Manager.height)
-      .fill(0x0000ff);
-    bg.alpha = 0.05;
-    Manager.app.stage.addChildAt(bg, 0);
-    Manager.app.stage.on("wheel", Manager.zoom, Manager.currentScene);
   }
   transitionIn() {
     Manager.app.stage.addChild(Manager.currentScene);

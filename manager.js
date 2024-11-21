@@ -1,4 +1,5 @@
 import { Application, Assets, Graphics, Texture, Ticker } from "pixi.js";
+import { Group } from "tweedle.js";
 import { manifest } from "./assets/assets";
 import { StartMenu } from "./scenes/StartMenu";
 export class Manager {
@@ -91,7 +92,7 @@ export class Manager {
   }
 
   static update(deltaTime) {
-    // Group.shared.update(); For your tweens
+    Group.shared.update();
     if (Manager.currentScene != undefined) {
       Manager.currentScene.update(deltaTime);
     }
@@ -119,11 +120,6 @@ export class Manager {
       }
     }
 
-    Manager.bg = new Graphics()
-      .rect(0, 0, Manager.width, Manager.height)
-      .fill(0xeeeeee);
-    Manager.bg.alpha = 0.000001;
-    Manager.app.stage.addChildAt(this.bg, 0);
 
     Manager.changeScene(new StartMenu());
     Manager.app.stage.on("wheel", Manager.zoom, Manager.currentScene);
