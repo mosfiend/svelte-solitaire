@@ -1,19 +1,19 @@
-* DONE Clean up and boilerplate
-* DONE Basic Ball Physics
-* DONE Color Switch
-* TODO Game Logic
-    * [x] Procedurally generated stages
-* DONE Arithmetics
-    * [x] Addition
-    * [x] Subtraction
-    * [x] Division
-    * [x] Multiplication
-* TODO UI
-    * [x] Select operations
-    * [x] Put logo on the game
-    * [ ] Add a dutch version
-    * [x] Resize it appropriately
+* TODO [EASY] 
+ + [ ] Win a game of solitaire
+ + [ ] Clean up and remove excess features (moving screen, unnecessary layers, data structures...)
+ + [ ] Create a set for the cards
+ + [ ] Make a spritesheet for the cards
 
+* TODO [MEDIUM] 
+ + [ ]
 
+* TODO [HARD] 
+ + [ ] Implement a magnetism mechanism
 
-    TODO
+* Naming convention
+* [Num][Type]
+  * 0S (10 of spades)
+  * AD (Ace of diamonds)
+  *
+  * 280 378 (distance) 
+  * 270 268 (dimensions)

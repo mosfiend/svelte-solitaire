@@ -1,6 +1,4 @@
-import { Graduate, Londrina_Solid } from "next/font/google";
 import { Container, Graphics, Sprite, Text } from "pixi.js";
-import { root } from "postcss";
 
 export class RootNode extends Container {
   constructor(rootData) {

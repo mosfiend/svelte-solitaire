@@ -10,7 +10,7 @@ const canvas = document.getElementById("pixi-canvas");
 // console.log((Manager.app.renderer.screen.width = 400));
 // Manager.app.renderer.screen.width = 400;
 async function init() {
-  await Manager.initialize(400, 640, 0x2e3037, lang ? lang : "english");
+  await Manager.initialize(400, 640, 0x219653);
   const loader = new LoaderScene();
   Manager.changeScene(loader);
 }

@@ -9,41 +9,33 @@ export class Manager {
 
   // With getters but not setters, these variables become read-only
   static get width() {
-    return Manager.parent.offsetWidth;
+    return Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0,
+    );
   }
   static get height() {
-    return Manager.parent.offsetHeight;
+    return Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0,
+    );
   }
 
-  static async initialize(
-    width,
-    height,
-    background,
-    el,
-    parentEl,
-    jsonData,
-    storeFunctions,
-  ) {
+  static async initialize( width, height, background) {
     // store our width and height
     Manager._width = width;
     Manager._height = height;
-    Manager.el = el;
-    Manager.parent = parentEl;
     // console.log(Manager.jsonData);
     // Create our pixi app
     Manager.app = new Application();
     await Manager.app.init({
-      canvas: Manager.el,
-      resizeTo: Manager.parent, // This line here handles the actual resize!
-      // resolution: window.devicePixelRatio || 1,
+      view: document.getElementById("pixi-canvas"),
+      resizeTo: document.getElementById("parent-div"), // This line here handles the actual resize!
+      resolution: window.devicePixelRatio || 1,
       autoDensity: true,
       antialias: true,
       backgroundColor: background,
     });
-    Manager.addNodeData = storeFunctions[0];
-    Manager.removeNodeData = storeFunctions[1];
-    Manager.editNodeData = storeFunctions[2];
-    Manager.toggleNodeEditor = storeFunctions[3];
 
     Ticker.shared.add(Manager.update);
     window.addEventListener("resize", Manager.resize);
@@ -113,15 +105,7 @@ export class Manager {
     let data = {};
     const cache = localStorage["persist:root"];
 
-    if (cache) {
-      const localData = JSON.parse(cache);
-      for (let ID in localData) {
-        data[ID] = JSON.parse(localData[ID]);
-      }
-      Manager.jsonData = data;
-    } else {
       Manager.jsonData = await Assets.load("jsonData");
-    }
     for (let nodeID in Manager.jsonData) {
       if (nodeID.length !== 36) continue;
       const imageID = Manager.jsonData[nodeID]["ray"]["content"]["image"];

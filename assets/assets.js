@@ -7,6 +7,7 @@ export const manifest = {
         remove_icon: "/images/remove-icon.png",
         add_image_icon: "/images/add-image-icon.png",
         settings_icon: "/images/settings-icon.png",
+        cards: "/images/cards.json",
       },
     },
     {
